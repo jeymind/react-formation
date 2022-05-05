@@ -1,0 +1,16 @@
+get All character
+const [characters, setCharacters] = useState([]);
+
+const fetchCharacters = useCallback(async () => {
+  try {
+    const result = await getCharacters();
+    setCharacters(result);
+  } catch (e) {
+    console.log(e);
+    alert('Erreur de récupération des listes des personnage');
+  }
+}, []); // eslint-disable-line
+
+useEffect(() => {
+  fetchCharacters();
+}, [fetchCharacters]);
